@@ -4,12 +4,12 @@
 	<xacro:property name="M_PI" value="3.1415926535897931" />
 	<xacro:property name="velocity_scale_factor" value="1.0"/>-->
 	<xacro:macro name="linear_actuator" params="prefix parent *joint_origin *joint_axis">
-		<joint name="${prefix}_linear_actuator_joint" type="fixed">
+		<joint name="${prefix}_linear_actuator_joint" type="prismatic">
 			<insert_block name="joint_origin"/>
 			<insert_block name="joint_axis"/>
 			<parent link="${parent}"/>
 			<child link="${prefix}_linear_actuator_link"/>
-			<limit lower="-1" upper="1"/>
+			<limit lower="-1" upper="1" effort="0.5" velocity="5.0"/>
 		</joint>
 
 		<link name="${prefix}_linear_actuator_link">

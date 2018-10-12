@@ -4,16 +4,42 @@
 	
 	<xacro:include filename="$(find six_dof_cam_description)/urdf/camera/camera.xacro"/>
 	<xacro:include filename="$(find six_dof_cam_description)/urdf/linear_actuator/linear_actuator.xacro"/>
+	<xacro:include filename="$(find six_dof_cam_description)/urdf/rotary_actuator/rotary_actuator.xacro"/>
 
 <!-- =============== Link & Joint =============== -->
 	<link name="map"/>
 
-	<!--<xacro:linear_actuator prefix="x" parent="base_footprint">
+	<xacro:linear_actuator prefix="x" parent="map">
 		<origin xyz="0 0 0" rpy="0 0 0"/>
 		<axis xyz="1 0 0"/>
-	</xacro:linear_actuator>-->
+	</xacro:linear_actuator>
 
-	<xacro:camera parent="map">
+	<xacro:linear_actuator prefix="y" parent="x_linear_actuator_link">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<axis xyz="0 1 0"/>
+	</xacro:linear_actuator>
+
+	<xacro:linear_actuator prefix="z" parent="y_linear_actuator_link">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<axis xyz="0 0 1"/>
+	</xacro:linear_actuator>
+
+	<xacro:rotary_actuator prefix="x" parent="z_linear_actuator_link">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<axis xyz="1 0 0"/>
+	</xacro:rotary_actuator>
+
+	<xacro:rotary_actuator prefix="y" parent="x_rotary_actuator_link">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<axis xyz="0 1 0"/>
+	</xacro:rotary_actuator>
+	
+	<xacro:rotary_actuator prefix="z" parent="y_rotary_actuator_link">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<axis xyz="0 0 1"/>
+	</xacro:rotary_actuator>
+
+	<xacro:camera parent="z_rotary_actuator_link">
 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:camera>
 
