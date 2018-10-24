@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-	<!--<xacro:include filename="$(find raspimouse_description)/urdf/body/body.gazebo.xacro"/>-->
+	<xacro:include filename="$(find six_dof_cam_description)/urdf/camera/camera.gazebo.xacro"/>
 	<!--<xacro:property name="M_PI" value="3.1415926535897931" />-->
 	<!--<xacro:property name="velocity_scale_factor" value="1.0"/>-->
 	<xacro:macro name="camera" params="parent *joint_origin">

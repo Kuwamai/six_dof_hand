@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">  
+	<xacro:macro name="rotary_actuator_gazebo" params="prefix">
+		<gazebo reference="${prefix}_rotary_actuator">
+			<!-- <selfCollide>true</selfCollide> -->
+			<!-- <mu1 value="0.05" /> -->
+			<!-- <mu2 value="0.05" /> -->
+			<mu1>0.05</mu1>
+			<mu2>0.05</mu2>
+		</gazebo>
+	</xacro:macro>
+</robot>
