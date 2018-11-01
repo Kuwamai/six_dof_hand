@@ -3,13 +3,18 @@
 	xmlns:xacro="http://ros.org/wiki/xacro">
 	
 	<xacro:include filename="$(find six_dof_cam_description)/urdf/camera/camera.xacro"/>
+	<xacro:include filename="$(find six_dof_cam_description)/urdf/base/base.xacro"/>
 	<xacro:include filename="$(find six_dof_cam_description)/urdf/linear_actuator/linear_actuator.xacro"/>
 	<xacro:include filename="$(find six_dof_cam_description)/urdf/rotary_actuator/rotary_actuator.xacro"/>
 
 <!-- =============== Link & Joint =============== -->
 	<link name="world"/>
 
-	<xacro:linear_actuator prefix="x" parent="world">
+	<xacro:base parent="world">
+		<origin xyz="0 0 0.05" rpy="0 0 0"/>
+	</xacro:base>
+
+	<xacro:linear_actuator prefix="x" parent="base_link">
 		<origin xyz="0 0 1" rpy="0 0 0"/>
 		<axis xyz="1 0 0"/>
 	</xacro:linear_actuator>
@@ -44,12 +49,12 @@
 	</xacro:camera>
 
 <!-- ===============  Transmission =============== -->
-<xacro:linear_actuator_trans prefix="x" interface="hardware_interface/PositionJointInterface"/>
-<xacro:linear_actuator_trans prefix="y" interface="hardware_interface/PositionJointInterface"/>
-<xacro:linear_actuator_trans prefix="z" interface="hardware_interface/PositionJointInterface"/>
-<xacro:rotary_actuator_trans prefix="x" interface="hardware_interface/PositionJointInterface"/>
-<xacro:rotary_actuator_trans prefix="y" interface="hardware_interface/PositionJointInterface"/>
-<xacro:rotary_actuator_trans prefix="z" interface="hardware_interface/PositionJointInterface"/>
+<xacro:linear_actuator_trans prefix="x" interface="hardware_interface/EffortJointInterface"/>
+<xacro:linear_actuator_trans prefix="y" interface="hardware_interface/EffortJointInterface"/>
+<xacro:linear_actuator_trans prefix="z" interface="hardware_interface/EffortJointInterface"/>
+<xacro:rotary_actuator_trans prefix="x" interface="hardware_interface/EffortJointInterface"/>
+<xacro:rotary_actuator_trans prefix="y" interface="hardware_interface/EffortJointInterface"/>
+<xacro:rotary_actuator_trans prefix="z" interface="hardware_interface/EffortJointInterface"/>
 
 <!-- =============== Gazebo =============== -->
 <gazebo>
@@ -57,6 +62,9 @@
 		<robotNamespace>six_dof_cam</robotNamespace>
 	</plugin>
 </gazebo>
+
+<!-- base -->
+<xacro:base_gazebo/>
 
 <!-- camera -->
 <xacro:camera_gazebo/>
