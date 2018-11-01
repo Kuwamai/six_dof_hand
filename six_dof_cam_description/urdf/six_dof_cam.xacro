@@ -7,10 +7,10 @@
 	<xacro:include filename="$(find six_dof_cam_description)/urdf/rotary_actuator/rotary_actuator.xacro"/>
 
 <!-- =============== Link & Joint =============== -->
-	<link name="map"/>
+	<link name="world"/>
 
-	<xacro:linear_actuator prefix="x" parent="map">
-		<origin xyz="0 0 0" rpy="0 0 0"/>
+	<xacro:linear_actuator prefix="x" parent="world">
+		<origin xyz="0 0 1" rpy="0 0 0"/>
 		<axis xyz="1 0 0"/>
 	</xacro:linear_actuator>
 
@@ -44,28 +44,28 @@
 	</xacro:camera>
 
 <!-- ===============  Transmission =============== -->
-<!-- PositionJointInterface: requires position -->
-<!-- <xacro:wheel_trans prefix="right" interface="PositionJointInterface"/> -->
-<!-- <xacro:wheel_trans prefix="left" interface="PositionJointInterface"/>  -->
-<!-- VelocityJointInterface: requires position, velocity -->
-<!-- for DiffDriveController -->
-<!--<xacro:wheel_trans prefix="right" interface="hardware_interface/VelocityJointInterface"/>-->
-<!--<xacro:wheel_trans prefix="left" interface="hardware_interface/VelocityJointInterface"/>-->
-<!-- EffortJointInterface: requires position, velocity, effort -->
-<!-- <xacro:wheel_trans prefix="right" interface="EffortJointInterface"/> -->
-<!-- <xacro:wheel_trans prefix="left" interface="EffortJointInterface"/>  -->
+<xacro:linear_actuator_trans prefix="x" interface="hardware_interface/PositionJointInterface"/>
+<xacro:linear_actuator_trans prefix="y" interface="hardware_interface/PositionJointInterface"/>
+<xacro:linear_actuator_trans prefix="z" interface="hardware_interface/PositionJointInterface"/>
+<xacro:rotary_actuator_trans prefix="x" interface="hardware_interface/PositionJointInterface"/>
+<xacro:rotary_actuator_trans prefix="y" interface="hardware_interface/PositionJointInterface"/>
+<xacro:rotary_actuator_trans prefix="z" interface="hardware_interface/PositionJointInterface"/>
 
 <!-- =============== Gazebo =============== -->
-<!--<gazebo>-->
-<!--<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">-->
-<!--<robotNamespace>raspimouse_on_gazebo</robotNamespace>-->
-<!--</plugin>-->
-<!--</gazebo>-->
+<gazebo>
+	<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+		<robotNamespace>six_dof_cam</robotNamespace>
+	</plugin>
+</gazebo>
 
-<!-- Base -->
-<!--<xacro:base_gazebo/>-->
+<!-- camera -->
+<xacro:camera_gazebo/>
 
-<!-- Wheel -->
-<!--<xacro:wheel_gazebo prefix="right"/>-->
-<!--<xacro:wheel_gazebo prefix="left"/>-->
+<!-- actuators -->
+<xacro:rotary_actuator_gazebo prefix="x"/>
+<xacro:rotary_actuator_gazebo prefix="y"/>
+<xacro:rotary_actuator_gazebo prefix="z"/>
+<xacro:linear_actuator_gazebo prefix="x"/>
+<xacro:linear_actuator_gazebo prefix="y"/>
+<xacro:linear_actuator_gazebo prefix="z"/>
 </robot>

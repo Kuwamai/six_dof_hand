@@ -1,0 +1,29 @@
+six_dof_cam:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+x_linear_actuator_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: x_linear_actuator_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+y_linear_actuator_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: y_linear_actuator_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+z_linear_actuator_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: z_linear_actuator_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+x_rotary_actuator_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: x_rotary_actuator_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+y_rotary_actuator_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: y_rotary_actuator_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+z_rotary_actuator_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: z_rotary_actuator_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}

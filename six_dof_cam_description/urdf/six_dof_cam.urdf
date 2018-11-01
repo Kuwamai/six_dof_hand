@@ -5,11 +5,11 @@
 <!-- =================================================================================== -->
 <robot name="six_dof_cam" xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- =============== Link & Joint =============== -->
-  <link name="map"/>
+  <link name="world"/>
   <joint name="x_linear_actuator_joint" type="prismatic">
-    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 1"/>
     <axis xyz="1 0 0"/>
-    <parent link="map"/>
+    <parent link="world"/>
     <child link="x_linear_actuator_link"/>
     <limit effort="0.5" lower="-1" upper="1" velocity="5.0"/>
   </joint>
@@ -112,27 +112,100 @@
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
-  <!-- ===============  Transmission =============== -->
-  <!-- PositionJointInterface: requires position -->
-  <!-- <xacro:wheel_trans prefix="right" interface="PositionJointInterface"/> -->
-  <!-- <xacro:wheel_trans prefix="left" interface="PositionJointInterface"/>  -->
-  <!-- VelocityJointInterface: requires position, velocity -->
-  <!-- for DiffDriveController -->
-  <!--<xacro:wheel_trans prefix="right" interface="hardware_interface/VelocityJointInterface"/>-->
-  <!--<xacro:wheel_trans prefix="left" interface="hardware_interface/VelocityJointInterface"/>-->
-  <!-- EffortJointInterface: requires position, velocity, effort -->
-  <!-- <xacro:wheel_trans prefix="right" interface="EffortJointInterface"/> -->
-  <!-- <xacro:wheel_trans prefix="left" interface="EffortJointInterface"/>  -->
+  <transmission name="x_linear_actuator_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="x_linear_actuator_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="x_linear_actuator_motor">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <transmission name="y_linear_actuator_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="y_linear_actuator_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="y_linear_actuator_motor">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <transmission name="z_linear_actuator_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="z_linear_actuator_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="z_linear_actuator_motor">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <transmission name="x_rotary_actuator_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="x_rotary_actuator_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="x_rotary_actuator_motor">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <transmission name="y_rotary_actuator_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="y_rotary_actuator_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="y_rotary_actuator_motor">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <transmission name="z_rotary_actuator_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="z_rotary_actuator_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="z_rotary_actuator_motor">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
   <!-- =============== Gazebo =============== -->
-  <!--<gazebo>-->
-  <!--<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">-->
-  <!--<robotNamespace>raspimouse_on_gazebo</robotNamespace>-->
-  <!--</plugin>-->
-  <!--</gazebo>-->
-  <!-- Base -->
-  <!--<xacro:base_gazebo/>-->
-  <!-- Wheel -->
-  <!--<xacro:wheel_gazebo prefix="right"/>-->
-  <!--<xacro:wheel_gazebo prefix="left"/>-->
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+      <robotNamespace>six_dof_cam</robotNamespace>
+    </plugin>
+  </gazebo>
+  <gazebo reference="camera_link">
+    <!-- <selfCollide>true</selfCollide> -->
+    <mu1>0.05</mu1>
+    <mu2>0.05</mu2>
+  </gazebo>
+  <gazebo reference="x_rotary_actuator_link">
+    <!-- <selfCollide>true</selfCollide> -->
+    <mu1>0.05</mu1>
+    <mu2>0.05</mu2>
+  </gazebo>
+  <gazebo reference="y_rotary_actuator_link">
+    <!-- <selfCollide>true</selfCollide> -->
+    <mu1>0.05</mu1>
+    <mu2>0.05</mu2>
+  </gazebo>
+  <gazebo reference="z_rotary_actuator_link">
+    <!-- <selfCollide>true</selfCollide> -->
+    <mu1>0.05</mu1>
+    <mu2>0.05</mu2>
+  </gazebo>
+  <gazebo reference="x_linear_actuator_link">
+    <!-- <selfCollide>true</selfCollide> -->
+    <mu1>0.05</mu1>
+    <mu2>0.05</mu2>
+  </gazebo>
+  <gazebo reference="y_linear_actuator_link">
+    <!-- <selfCollide>true</selfCollide> -->
+    <mu1>0.05</mu1>
+    <mu2>0.05</mu2>
+  </gazebo>
+  <gazebo reference="z_linear_actuator_link">
+    <!-- <selfCollide>true</selfCollide> -->
+    <mu1>0.05</mu1>
+    <mu2>0.05</mu2>
+  </gazebo>
 </robot>
 

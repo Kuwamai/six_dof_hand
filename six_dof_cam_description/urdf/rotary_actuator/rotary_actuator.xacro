@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 	<xacro:include filename="$(find six_dof_cam_description)/urdf/rotary_actuator/rotary_actuator.gazebo.xacro"/>
+	<xacro:include filename="$(find six_dof_cam_description)/urdf/rotary_actuator/rotary_actuator.transmission.xacro"/>
 	<xacro:property name="M_PI" value="3.1415926535897931" />
 	<xacro:property name="velocity_scale_factor" value="1.0"/>
 	<xacro:macro name="rotary_actuator" params="prefix parent *joint_origin *joint_axis">
 		<joint name="${prefix}_rotary_actuator_joint" type="revolute">
-			<insert_block name="joint_origin"/>
-			<insert_block name="joint_axis"/>
+			<xacro:insert_block name="joint_origin"/>
+			<xacro:insert_block name="joint_axis"/>
 			<parent link="${parent}"/>
 			<child link="${prefix}_rotary_actuator_link"/>
 			<limit lower="-3.14" upper="3.14" effort="0.5" velocity="5.0"/>

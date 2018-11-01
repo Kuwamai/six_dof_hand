@@ -3,8 +3,6 @@
 	<xacro:macro name="camera_gazebo">
 		<gazebo reference="camera_link">
 			<!-- <selfCollide>true</selfCollide> -->
-			<!-- <mu1 value="0.05" /> -->
-			<!-- <mu2 value="0.05" /> -->
 			<mu1>0.05</mu1>
 			<mu2>0.05</mu2>
 		</gazebo>

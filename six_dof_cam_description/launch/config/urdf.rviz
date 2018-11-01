@@ -7,9 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Status1
-        - /TF1
-        - /TF1/Status1
       Splitter Ratio: 0.5
     Tree Height: 467
   - Class: rviz/Selection
@@ -67,7 +64,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        map:
+        world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -108,7 +105,7 @@ Visualization Manager:
         All Enabled: true
         camera_link:
           Value: true
-        map:
+        world:
           Value: true
         x_linear_actuator_link:
           Value: true
@@ -128,23 +125,22 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
+        world:
           x_linear_actuator_link:
             y_linear_actuator_link:
               z_linear_actuator_link:
                 x_rotary_actuator_link:
                   y_rotary_actuator_link:
-                    {}
-              z_rotary_actuator_link:
-                camera_link:
-                  {}
+                    z_rotary_actuator_link:
+                      camera_link:
+                        {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:

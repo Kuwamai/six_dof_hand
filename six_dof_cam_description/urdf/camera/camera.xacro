@@ -5,7 +5,7 @@
 	<!--<xacro:property name="velocity_scale_factor" value="1.0"/>-->
 	<xacro:macro name="camera" params="parent *joint_origin">
 		<joint name="camera_joint" type="fixed">
-			<insert_block name="joint_origin"/>
+			<xacro:insert_block name="joint_origin"/>
 			<parent link="${parent}"/>
 			<child link="camera_link"/>
 		</joint>

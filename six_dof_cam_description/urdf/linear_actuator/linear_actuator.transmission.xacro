@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:macro name="linear_actuator_trans" params="prefix interface">
+		<transmission name="${prefix}_linear_actuator_trans">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${prefix}_linear_actuator_joint">
+				<hardwareInterface>${interface}</hardwareInterface>
+			</joint>
+			<actuator name="${prefix}_linear_actuator_motor">
+				<hardwareInterface>${interface}</hardwareInterface>
+			</actuator>
+		</transmission>
+	</xacro:macro>
+</robot>
