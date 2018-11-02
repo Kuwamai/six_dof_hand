@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">  
 	<xacro:macro name="base_gazebo">
 		<gazebo reference="base_link">
-			<!-- <selfCollide>true</selfCollide> -->
+			<!--<selfCollide>true</selfCollide>-->
 			<mu1>0.05</mu1>
 			<mu2>0.05</mu2>
 		</gazebo>

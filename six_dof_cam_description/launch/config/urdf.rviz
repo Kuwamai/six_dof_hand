@@ -59,6 +59,11 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         camera_link:
           Alpha: 1
           Show Axes: false
@@ -103,6 +108,8 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_link:
+          Value: true
         camera_link:
           Value: true
         world:
@@ -126,14 +133,15 @@ Visualization Manager:
       Show Names: true
       Tree:
         world:
-          x_linear_actuator_link:
-            y_linear_actuator_link:
-              z_linear_actuator_link:
-                x_rotary_actuator_link:
-                  y_rotary_actuator_link:
-                    z_rotary_actuator_link:
-                      camera_link:
-                        {}
+          base_link:
+            x_linear_actuator_link:
+              y_linear_actuator_link:
+                z_linear_actuator_link:
+                  x_rotary_actuator_link:
+                    y_rotary_actuator_link:
+                      z_rotary_actuator_link:
+                        camera_link:
+                          {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -161,7 +169,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.9398191
+      Distance: 2.43330908
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -176,7 +184,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.765398085
+      Pitch: 0.985397875
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
       Yaw: 0.185397685
