@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <robot name="six_dof_cam"
 	xmlns:xacro="http://ros.org/wiki/xacro">
-	
 	<xacro:include filename="$(find six_dof_cam_description)/urdf/camera/camera.xacro"/>
-	<xacro:include filename="$(find six_dof_cam_description)/urdf/base/base.xacro"/>
-	<xacro:include filename="$(find six_dof_cam_description)/urdf/linear_actuator/linear_actuator.xacro"/>
+	<xacro:include filename="$(find six_dof_cam_description)/urdf/base/base.xacro"/> 
+	<xacro:include filename="$(find six_dof_cam_description)/urdf/linear_actuator/linear_actuator.xacro"/> 
 	<xacro:include filename="$(find six_dof_cam_description)/urdf/rotary_actuator/rotary_actuator.xacro"/>
 
 <!-- =============== Link & Joint =============== -->
@@ -13,7 +12,6 @@
 	<xacro:base parent="world">
 		<origin xyz="0 0 0.05" rpy="0 0 0"/>
 	</xacro:base>
-
 	<xacro:linear_actuator prefix="x" parent="base_link">
 		<origin xyz="0 0 1" rpy="0 0 0"/>
 		<axis xyz="1 0 0"/>
@@ -44,9 +42,9 @@
 		<axis xyz="0 0 1"/>
 	</xacro:rotary_actuator>
 
-	<xacro:camera parent="z_rotary_actuator_link">
+	<xacro:camera_model parent="z_rotary_actuator_link">
 		<origin xyz="0 0 0" rpy="0 0 0"/>
-	</xacro:camera>
+	</xacro:camera_model>
 
 <!-- ===============  Transmission =============== -->
 <xacro:linear_actuator_trans prefix="x" interface="hardware_interface/EffortJointInterface"/>
