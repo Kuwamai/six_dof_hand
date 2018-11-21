@@ -10,7 +10,7 @@
 			<xacro:insert_block name="joint_axis"/>
 			<parent link="${parent}"/>
 			<child link="${prefix}_rotary_actuator_link"/>
-			<limit lower="-3.14" upper="3.14" effort="5.0" velocity="5.0"/>
+			<limit lower="-3.14" upper="3.14" effort="1000.0" velocity="100.0"/>
 		</joint>
 
 		<link name="${prefix}_rotary_actuator_link">
