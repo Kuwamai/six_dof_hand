@@ -1,1 +1,1 @@
-# six_dof_cam
+# six_dof_hand

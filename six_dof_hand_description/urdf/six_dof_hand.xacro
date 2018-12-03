@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<robot name="six_dof_cam"
+<robot name="six_dof_hand"
 	xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:include filename="$(find six_dof_cam_description)/urdf/camera/camera.xacro"/>
-	<xacro:include filename="$(find six_dof_cam_description)/urdf/base/base.xacro"/> 
-	<xacro:include filename="$(find six_dof_cam_description)/urdf/linear_actuator/linear_actuator.xacro"/> 
-	<xacro:include filename="$(find six_dof_cam_description)/urdf/rotary_actuator/rotary_actuator.xacro"/>
+	<xacro:include filename="$(find six_dof_hand_description)/urdf/camera/camera.xacro"/>
+	<xacro:include filename="$(find six_dof_hand_description)/urdf/base/base.xacro"/> 
+	<xacro:include filename="$(find six_dof_hand_description)/urdf/linear_actuator/linear_actuator.xacro"/> 
+	<xacro:include filename="$(find six_dof_hand_description)/urdf/rotary_actuator/rotary_actuator.xacro"/>
 
 <!-- =============== Link & Joint =============== -->
 	<link name="world"/>
@@ -57,7 +57,7 @@
 <!-- =============== Gazebo =============== -->
 <gazebo>
 	<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-		<robotNamespace>six_dof_cam</robotNamespace>
+		<robotNamespace>six_dof_hand</robotNamespace>
 	</plugin>
 </gazebo>
 

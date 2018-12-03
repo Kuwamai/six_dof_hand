@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:include filename="$(find six_dof_cam_description)/urdf/camera/camera.gazebo.xacro"/>
+	<xacro:include filename="$(find six_dof_hand_description)/urdf/camera/camera.gazebo.xacro"/>
 	<xacro:macro name="camera_model" params="parent *joint_origin">
 		<joint name="camera_joint" type="fixed">
 			<xacro:insert_block name="joint_origin"/>

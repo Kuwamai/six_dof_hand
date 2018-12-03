@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <launch>
 	<!-- Load joint controller configurations from YAML file to parameter server -->
-	<rosparam file="$(find six_dof_cam_control)/config/controller.yaml" command="load"/>
+	<rosparam file="$(find six_dof_hand_control)/config/controller.yaml" command="load"/>
 
 	<!-- load the controllers -->
 	<node name="controller_spawner" pkg="controller_manager"
-		type="spawner" ns="six_dof_cam" output="screen"
+		type="spawner" ns="six_dof_hand" output="screen"
 		args="joint_state_controller
 		x_linear_actuator_joint_position_controller
 		y_linear_actuator_joint_position_controller
@@ -17,6 +17,6 @@
 	<!-- convert joint states to TF transforms for rviz, etc -->
 	<node name="robot_state_publisher" pkg="robot_state_publisher"
 		type="robot_state_publisher"
-		respawn="false" output="screen" ns="/six_dof_cam">
+		respawn="false" output="screen" ns="/six_dof_hand">
 	</node>
 </launch>

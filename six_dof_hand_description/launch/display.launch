@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-	<arg name="model" default="$(find six_dof_cam_description)/urdf/six_dof_cam.xacro" />
-	<arg name="rvizconfig" default="$(find six_dof_cam_description)/launch/config/urdf.rviz" />
+	<arg name="model" default="$(find six_dof_hand_description)/urdf/six_dof_hand.xacro" />
+	<arg name="rvizconfig" default="$(find six_dof_hand_description)/launch/config/urdf.rviz" />
 	<arg name="gui" default="true" />
 
 	<param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />

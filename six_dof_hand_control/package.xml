@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>six_dof_cam_control</name>
+  <name>six_dof_hand_control</name>
   <version>0.0.0</version>
-  <description>The six_dof_cam_control package</description>
+  <description>The six_dof_hand_control package</description>
 
   <maintainer email="mitsumex333@gmail.com">kuwagata</maintainer>
 
