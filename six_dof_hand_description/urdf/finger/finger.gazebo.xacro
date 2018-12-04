@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">  
+	<xacro:macro name="finger_gazebo" params="prefix">
+		<gazebo reference="${prefix}_finger_link">
+			<!-- <selfCollide>true</selfCollide> -->
+			<mu1>0.05</mu1>
+			<mu2>0.05</mu2>
+		</gazebo>
+		<gazebo reference="${prefix}_finger_tip_link">
+			<!-- <selfCollide>true</selfCollide> -->
+			<mu1>0.05</mu1>
+			<mu2>0.05</mu2>
+		</gazebo>
+	</xacro:macro>
+</robot>

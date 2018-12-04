@@ -12,7 +12,9 @@
 		z_linear_actuator_joint_position_controller
 		x_rotary_actuator_joint_position_controller
 		y_rotary_actuator_joint_position_controller
-		z_rotary_actuator_joint_position_controller"/>
+		z_rotary_actuator_joint_position_controller
+		r_finger_joint_position_controller
+		l_finger_joint_position_controller"/>
 
 	<!-- convert joint states to TF transforms for rviz, etc -->
 	<node name="robot_state_publisher" pkg="robot_state_publisher"

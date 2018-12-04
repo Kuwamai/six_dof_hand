@@ -5,6 +5,8 @@
 	<xacro:include filename="$(find six_dof_hand_description)/urdf/base/base.xacro"/> 
 	<xacro:include filename="$(find six_dof_hand_description)/urdf/linear_actuator/linear_actuator.xacro"/> 
 	<xacro:include filename="$(find six_dof_hand_description)/urdf/rotary_actuator/rotary_actuator.xacro"/>
+	<xacro:include filename="$(find six_dof_hand_description)/urdf/finger/finger.xacro"/>
+	<xacro:property name="M_PI" value="3.1415926535897931" />
 
 <!-- =============== Link & Joint =============== -->
 	<link name="world"/>
@@ -46,6 +48,16 @@
 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:camera_model>
 
+	<xacro:finger prefix="r" parent="camera_link">
+		<origin xyz="0.030 0.040 0" rpy="0 0 0"/>
+		<axis xyz="0 0 1"/>
+	</xacro:finger>
+
+	<xacro:finger prefix="l" parent="camera_link">
+		<origin xyz="-0.030 0.040 0" rpy="0 ${M_PI} 0"/>
+		<axis xyz="0 0 1"/>
+	</xacro:finger>
+
 <!-- ===============  Transmission =============== -->
 <xacro:linear_actuator_trans prefix="x" interface="hardware_interface/EffortJointInterface"/>
 <xacro:linear_actuator_trans prefix="y" interface="hardware_interface/EffortJointInterface"/>
@@ -53,6 +65,8 @@
 <xacro:rotary_actuator_trans prefix="x" interface="hardware_interface/EffortJointInterface"/>
 <xacro:rotary_actuator_trans prefix="y" interface="hardware_interface/EffortJointInterface"/>
 <xacro:rotary_actuator_trans prefix="z" interface="hardware_interface/EffortJointInterface"/>
+<xacro:finger_trans prefix="r" interface="hardware_interface/EffortJointInterface"/>
+<xacro:finger_trans prefix="l" interface="hardware_interface/EffortJointInterface"/>
 
 <!-- =============== Gazebo =============== -->
 <gazebo>
@@ -74,4 +88,6 @@
 <xacro:linear_actuator_gazebo prefix="x"/>
 <xacro:linear_actuator_gazebo prefix="y"/>
 <xacro:linear_actuator_gazebo prefix="z"/>
+<xacro:finger_gazebo prefix="r"/>
+<xacro:finger_gazebo prefix="l"/>
 </robot>

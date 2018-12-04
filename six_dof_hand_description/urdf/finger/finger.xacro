@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="$(find six_dof_hand_description)/urdf/finger/finger.gazebo.xacro"/>
+	<xacro:include filename="$(find six_dof_hand_description)/urdf/finger/finger.transmission.xacro"/>
+	<xacro:property name="M_PI" value="3.1415926535897931" />
+	<xacro:property name="velocity_scale_factor" value="1.0"/>
+	<xacro:macro name="finger" params="prefix parent *joint_origin *joint_axis">
+		<joint name="${prefix}_finger_joint" type="revolute">
+			<xacro:insert_block name="joint_origin"/>
+			<xacro:insert_block name="joint_axis"/>
+			<parent link="${parent}"/>
+			<child link="${prefix}_finger_link"/>
+			<limit lower="-1" upper="0" effort="1000.0" velocity="100.0"/>
+		</joint>
+
+		<link name="${prefix}_finger_link">
+			<pose>0 0.0115 0 0 0 0</pose>
+			<inertial>
+				<origin xyz="0 0 0"/>
+				<mass value="1.0"/>
+				<inertia ixx="1.0" ixy="0.0" iyy="1.0" ixz="0.0" iyz="0.0" izz="1.0"/>
+			</inertial>
+			<collision name="collision">
+				<geometry>
+					<box size="0.01 0.033 0.07"/>
+				</geometry>
+				<origin rpy="0 0 0" xyz="0 0.0115 0"/>
+			</collision>
+			<visual name="visual">
+				<geometry>
+					<box size="0.01 0.033 0.07"/>
+				</geometry>
+				<origin rpy="0 0 0" xyz="0 0.0115 0"/>
+			</visual>
+		</link>
+
+		<joint name="${prefix}_finger_tip_joint" type="fixed">
+			<parent link="${prefix}_finger_link"/>
+			<child link="${prefix}_finger_tip_link"/>
+			<limit lower="-3.14" upper="3.14" effort="1000.0" velocity="100.0"/>
+			<origin rpy="0 0 0" xyz="-0.013964 0.044036 0"/>
+			<axis xyz="0 0 1"/>
+		</joint>
+
+		<link name="${prefix}_finger_tip_link">
+			<pose>0 0 0 0 0 0</pose>
+			<inertial>
+				<origin xyz="0 0 0"/>
+				<mass value="1.0"/>
+				<inertia ixx="1.0" ixy="0.0" iyy="1.0" ixz="0.0" iyz="0.0" izz="1.0"/>
+			</inertial>
+			<collision name="collision">
+				<geometry>
+					<box size="0.01 0.035355 0.07"/>
+				</geometry>
+				<origin rpy="0 0 ${M_PI/4}" xyz="0 0 0"/>
+			</collision>
+			<visual name="visual">
+				<geometry>
+					<box size="0.01 0.035355 0.07"/>
+				</geometry>
+				<origin rpy="0 0 ${M_PI/4}" xyz="0 0 0"/>
+			</visual>
+		</link>
+	</xacro:macro>
+</robot>
