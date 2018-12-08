@@ -7,8 +7,8 @@ from std_msgs.msg import Float64
 
 class Pose_pub:
 	def __init__(self):
-		self._sub_pos = rospy.Subscriber("controller_l", PoseStamped, self.pose_callback)
-		self._sub_tri = rospy.Subscriber("trigger_l", Float64, self.trigger_callback)
+		self._sub_pos = rospy.Subscriber("controller_r", PoseStamped, self.pose_callback)
+		self._sub_tri = rospy.Subscriber("trigger_r", Float64, self.trigger_callback)
 
 		self._pub_lx = rospy.Publisher("six_dof_hand/x_linear_actuator_joint_position_controller/command", Float64, queue_size=10)
 		self._pub_ly = rospy.Publisher("six_dof_hand/y_linear_actuator_joint_position_controller/command", Float64, queue_size=10)
