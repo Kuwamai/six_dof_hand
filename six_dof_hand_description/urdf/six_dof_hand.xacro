@@ -49,12 +49,18 @@
 	</xacro:camera_model>
 
 	<xacro:finger prefix="r" parent="camera_link">
+	<!--
 		<origin xyz="0.030 0.040 0" rpy="0 0 0"/>
+	-->
+		<origin xyz="0.040 -0.030 0" rpy="0 0 ${-M_PI / 2}"/>
 		<axis xyz="0 0 1"/>
 	</xacro:finger>
 
 	<xacro:finger prefix="l" parent="camera_link">
+	<!--
 		<origin xyz="-0.030 0.040 0" rpy="0 ${M_PI} 0"/>
+	-->
+		<origin xyz="0.040 0.030 0" rpy="0 ${M_PI} ${-M_PI / 2}"/>
 		<axis xyz="0 0 1"/>
 	</xacro:finger>
 
