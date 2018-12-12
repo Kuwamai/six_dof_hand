@@ -15,7 +15,7 @@
 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:base>
 	<xacro:linear_actuator prefix="x" parent="base_link">
-		<origin xyz="0 0 1" rpy="0 0 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
 		<axis xyz="1 0 0"/>
 	</xacro:linear_actuator>
 
