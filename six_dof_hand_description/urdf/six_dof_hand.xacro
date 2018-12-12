@@ -12,7 +12,7 @@
 	<link name="world"/>
 
 	<xacro:base parent="world">
-		<origin xyz="0 0 0.05" rpy="0 0 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:base>
 	<xacro:linear_actuator prefix="x" parent="base_link">
 		<origin xyz="0 0 1" rpy="0 0 0"/>
