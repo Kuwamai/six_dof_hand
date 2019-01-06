@@ -30,8 +30,8 @@ six_dof_hand:
   r_finger_joint_position_controller:
     type: effort_controllers/JointPositionController
     joint: r_finger_joint
-    pid: {p: 100.0, i: 0.01, d: 50}
+    pid: {p: 10.0, i: 0.001, d: 5}
   l_finger_joint_position_controller:
     type: effort_controllers/JointPositionController
     joint: l_finger_joint
-    pid: {p: 100.0, i: 0.01, d: 50}
+    pid: {p: 10.0, i: 0.001, d: 5}
